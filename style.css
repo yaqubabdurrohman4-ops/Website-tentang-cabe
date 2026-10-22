@@ -1,0 +1,7 @@
+.card-body-padding {
+  padding: 24px;
+}
+.card {
+  overflow: hidden; /* Mencegah gambar atau teks keluar dari border card */
+  padding: 0;       /* Reset padding dasar card */
+}

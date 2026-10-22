@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CabaiPedia - Portal Edukasi & Informasi Cabai Nusantara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       WEBSITE CABAI NUSANTARA - STYLESHEET UTAMA
+       Warna & Tema: Bright Chili Light Theme
+       ========================================================================== */
+    :root {
+      --chili-red: #D32F2F;
+      --chili-red-hover: #B71C1C;
+      --chili-red-light: #FFEBEE;
+      --chili-orange: #F57C00;
+      --chili-orange-light: #FFF3E0;
+      --chili-green: #2E7D32;
+      --chili-green-hover: #1B5E20;
+      --chili-green-light: #E8F5E9;
+      --chili-yellow: #FBC02D;
+
+      --bg-page: #FAF7F5;
+      --bg-surface: #FFFFFF;
+      --bg-secondary: #FFF0EB;
+      --text-main: #212121;
+      --text-muted: #5F6368;
+      --text-light: #FFFFFF;
+      --border-color: #FFE0B2;
+      --shadow-sm: 0 2px 8px rgba(211, 47, 47, 0.08);
+      --shadow-md: 0 4px 16px rgba(211, 47, 47, 0.12);
+      --shadow-lg: 0 10px 30px rgba(211, 47, 47, 0.18);
+
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; font-size: 16px; overflow-x: hidden; }
+    a { color: var(--chili-red); text-decoration: none; transition: var(--transition); cursor: pointer; }
+    a:hover { color: var(--chili-red-hover); }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER & NAVBAR */
+    .header {
+      position: sticky; top: 0; z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--chili-red-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .navbar { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; color: var(--chili-red); letter-spacing: -0.5px; }
+    .logo-icon { width: 38px; height: 38px; background-color: var(--chili-red-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .logo span { color: var(--chili-green); }
+    .nav-menu { display: flex; align-items: center; gap: 8px; }
+    .nav-link { padding: 10px 18px; font-weight: 600; font-size: 0.95rem; color: var(--text-main); border-radius: var(--radius-full); transition: var(--transition); }
+    .nav-link:hover { color: var(--chili-red); background-color: var(--chili-red-light); }
+    .nav-link.active { color: var(--text-light); background-color: var(--chili-red); box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3); }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--chili-red); cursor: pointer; padding: 5px; }
+
+    /* HERO BANNER */
+    .hero { background: linear-gradient(135deg, #FFF3F0 0%, #FFEBE6 50%, #E8F5E9 100%); padding: 70px 0; position: relative; overflow: hidden; border-bottom: 1px solid var(--border-color); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background-color: var(--bg-surface); color: var(--chili-red); border: 1px solid var(--chili-red-light); border-radius: var(--radius-full); font-size: 0.88rem; font-weight: 700; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+    .hero-title { font-size: 2.8rem; font-weight: 800; line-height: 1.2; color: var(--text-main); margin-bottom: 20px; }
+    .hero-title span { color: var(--chili-red); position: relative; display: inline-block; }
+    .hero-description { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 540px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; font-weight: 700; font-size: 1rem; border-radius: var(--radius-full); cursor: pointer; border: none; transition: var(--transition); }
+    .btn-primary { background-color: var(--chili-red); color: var(--text-light); box-shadow: 0 6px 20px rgba(211, 47, 47, 0.35); }
+    .btn-primary:hover { background-color: var(--chili-red-hover); color: var(--text-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(211, 47, 47, 0.45); }
+    .btn-secondary { background-color: var(--bg-surface); color: var(--chili-green); border: 2px solid var(--chili-green); box-shadow: var(--shadow-sm); }
+    .btn-secondary:hover { background-color: var(--chili-green); color: var(--text-light); transform: translateY(-2px); }
+
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .hero-card-preview { background: var(--bg-surface); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-lg); border: 2px solid var(--chili-red-light); width: 100%; max-width: 440px; text-align: center; }
+
+    /* STATS SECTION */
+    .stats-section { padding: 40px 0; background-color: var(--bg-surface); margin-top: -30px; position: relative; z-index: 10; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 60px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+    .stat-card { padding: 20px; border-right: 1px solid var(--border-color); }
+    .stat-card:last-child { border-right: none; }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--chili-red); line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
+
+    /* SECTION TITLE & CARDS */
+    .section-title-wrap { text-align: center; margin-bottom: 45px; }
+    .section-tag { display: inline-block; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--chili-green); background-color: var(--chili-green-light); padding: 6px 14px; border-radius: var(--radius-full); margin-bottom: 10px; }
+    .section-title { font-size: 2rem; font-weight: 800; color: var(--text-main); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+    .card { background: var(--bg-surface); border-radius: var(--radius-md); padding: 0; border: 1px solid rgba(211, 47, 47, 0.1); box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--chili-red); }
+    .card-body-padding { padding: 24px; }
+
+    /* SEARCH BAR */
+    .cabaipedia-search-wrapper { max-width: 650px; margin: 0 auto 40px auto; padding: 0 15px; }
+    .search-input-container { display: flex; align-items: center; background: #ffffff; border: 2px solid #e0e0e0; border-radius: 50px; padding: 6px 8px 6px 18px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+    .search-input-container:hover { border-color: var(--chili-red); box-shadow: 0 6px 20px rgba(211, 47, 47, 0.15); transform: translateY(-1px); }
+    .search-input-container:focus-within { border-color: var(--chili-red); box-shadow: 0 0 0 4px var(--chili-red-light); }
+    .search-icon-fixed { font-size: 1.1rem; margin-right: 12px; color: var(--text-muted); }
+    .search-input-container input { flex: 1; border: none; outline: none; font-size: 0.95rem; color: var(--text-main); background: transparent; }
+    .search-btn { background-color: var(--chili-red); color: #ffffff; border: none; padding: 12px 24px; border-radius: 35px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; }
+    .search-btn:hover { background-color: var(--chili-red-hover); box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4); transform: scale(1.03); }
+    .search-notification { text-align: center; font-weight: 700; font-size: 0.9rem; margin-top: 10px; min-height: 20px; }
+
+    /* FILTER BUTTONS */
+    .filter-box { background-color: var(--bg-surface); padding: 20px 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); margin-bottom: 40px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between; }
+    .filter-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 18px; border-radius: var(--radius-full); background-color: var(--bg-page); border: 1px solid #E0E0E0; font-weight: 600; font-size: 0.88rem; color: var(--text-muted); cursor: pointer; transition: var(--transition); }
+    .filter-btn:hover, .filter-btn.active { background-color: var(--chili-red); color: var(--text-light); border-color: var(--chili-red); }
+
+    /* CHILI CARD COMPONENT */
+    .chili-card-img { height: 180px; width: 100%; overflow: hidden; background: linear-gradient(135deg, #FFEBEE 0%, #FFCCBC 100%); display: flex; align-items: center; justify-content: center; }
+    .chili-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .chili-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .chili-name { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
+    .chili-latin { font-size: 0.88rem; font-style: italic; color: var(--text-muted); margin-top: 2px; }
+    .badge-heat { padding: 6px 12px; border-radius: var(--radius-full); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; white-space: nowrap; }
+    .heat-low { background-color: #E8F5E9; color: #2E7D32; }
+    .heat-medium { background-color: #FFF3E0; color: #E65100; }
+    .heat-high { background-color: #FFEBEE; color: #C62828; }
+    .heat-extreme { background-color: #311B92; color: #FFFFFF; }
+
+    .scoville-bar-wrap { margin: 18px 0; }
+    .scoville-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
+    .scoville-bar { height: 10px; background-color: #E0E0E0; border-radius: var(--radius-full); overflow: hidden; }
+    .scoville-fill { height: 100%; border-radius: var(--radius-full); background: linear-gradient(90deg, #4CAF50 0%, #FF9800 50%, #E53935 100%); transition: width 1s ease-in-out; }
+
+    .chili-details { background-color: var(--bg-page); padding: 14px; border-radius: var(--radius-sm); margin-top: 16px; font-size: 0.88rem; }
+    .chili-detail-row { display: flex; justify-content: space-between; margin-bottom: 6px; gap: 10px; }
+    .chili-detail-row:last-child { margin-bottom: 0; }
+    .chili-detail-label { color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+    .chili-detail-value { font-weight: 700; color: var(--text-main); text-align: right; }
+
+    /* PAGE HEADER */
+    .page-header { background: linear-gradient(135deg, #FFF3F0 0%, #E8F5E9 100%); padding: 50px 0; text-align: center; border-bottom: 1px solid var(--border-color); margin-bottom: 40px; }
+    .page-title { font-size: 2.3rem; font-weight: 800; color: var(--chili-red); margin-bottom: 12px; }
+    .page-subtitle { font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; }
+
+    /* NUTRITION & BENEFITS */
+    .nutrition-table-wrap { background-color: var(--bg-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--border-color); margin-top: 30px; }
+    .nutrition-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .nutrition-table th { background-color: var(--chili-red); color: var(--text-light); padding: 16px 20px; font-weight: 700; font-size: 1rem; }
+    .nutrition-table td { padding: 14px 20px; border-bottom: 1px solid #EEEEEE; font-size: 0.95rem; }
+    .nutrition-table tr:hover { background-color: var(--chili-red-light); }
+    .benefit-card { display: flex; gap: 20px; align-items: flex-start; padding: 24px; }
+    .benefit-icon { width: 56px; height: 56px; border-radius: 16px; background-color: var(--chili-red-light); color: var(--chili-red); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; }
+
+    /* TIMELINE BUDIDAYA */
+    .timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+    .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 24px; width: 4px; background-color: var(--chili-red-light); }
+    .timeline-step { position: relative; margin-bottom: 35px; padding-left: 70px; }
+    .timeline-number { position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background-color: var(--chili-red); color: var(--text-light); font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3); z-index: 2; }
+    .timeline-content { background-color: var(--bg-surface); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+    .timeline-title { font-size: 1.3rem; font-weight: 800; color: var(--chili-red); margin-bottom: 10px; }
+
+    /* RECIPES */
+    .recipe-card { background: var(--bg-surface); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition); display: flex; flex-direction: column; }
+    .recipe-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .recipe-header-img { height: 190px; width: 100%; overflow: hidden; background-color: var(--chili-red-light); }
+    .recipe-header-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .recipe-card:hover .recipe-header-img img { transform: scale(1.05); }
+    .recipe-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .recipe-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .recipe-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .recipe-tag { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-full); background-color: var(--chili-orange-light); color: var(--chili-orange); }
+    .recipe-tag.tag-red { background-color: var(--chili-red-light); color: var(--chili-red); }
+    .recipe-tag.tag-green { background-color: var(--chili-green-light); color: var(--chili-green); }
+    .recipe-ingredients { margin-top: 4px; font-size: 0.9rem; color: var(--text-muted); }
+    .recipe-ingredients li { margin-bottom: 6px; position: relative; padding-left: 18px; }
+    .recipe-ingredients li::before { content: '🌶️'; position: absolute; left: 0; font-size: 0.75rem; }
+    .recipe-steps-wrap { margin-top: auto; padding-top: 18px; border-top: 1px dashed var(--border-color); }
+    .recipe-steps { padding-left: 20px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+    .recipe-steps li { margin-bottom: 6px; }
+
+    /* QUIZ & FAQ */
+    .quiz-card { background-color: var(--bg-surface); border-radius: var(--radius-lg); padding: 35px; box-shadow: var(--shadow-md); border: 2px solid var(--chili-red-light); max-width: 700px; margin: 0 auto; }
+    .quiz-option { display: block; width: 100%; padding: 16px 20px; margin-bottom: 12px; background-color: var(--bg-page); border: 2px solid #E0E0E0; border-radius: var(--radius-md); text-align: left; font-size: 1rem; font-weight: 600; cursor: pointer; transition: var(--transition); }
+    .quiz-option:hover { border-color: var(--chili-red); background-color: var(--chili-red-light); }
+
+    .faq-item { background-color: var(--bg-surface); border-radius: var(--radius-md); margin-bottom: 16px; border: 1px solid var(--border-color); overflow: hidden; }
+    .faq-question { padding: 20px; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { padding: 0 20px 20px 20px; color: var(--text-muted); display: none; }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* FOOTER */
+    .footer { background-color: #1F2937; color: #F3F4F6; padding: 60px 0 20px 0; margin-top: 80px; border-top: 4px solid var(--chili-red); }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-logo { font-size: 1.5rem; font-weight: 800; color: #FFFFFF; margin-bottom: 16px; }
+    .footer-logo span { color: #4ADE80; }
+    .footer-desc { color: #9CA3AF; font-size: 0.95rem; line-height: 1.6; }
+    .footer-title { font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 20px; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #D1D5DB; font-size: 0.95rem; }
+    .footer-links a:hover { color: #F87171; padding-left: 4px; }
+    .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #374151; color: #9CA3AF; font-size: 0.9rem; }
+
+    .page-section { display: none; }
+    .page-section.active-page { display: block; }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-buttons { justify-content: center; }
+      .hero-description { margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 768px) {
+      .nav-menu { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background-color: var(--bg-surface); flex-direction: column; padding: 30px; gap: 15px; box-shadow: var(--shadow-lg); transition: var(--transition); }
+      .nav-menu.active { left: 0; }
+      .nav-toggle { display: block; }
+      .timeline::before { left: 15px; }
+      .timeline-step { padding-left: 50px; }
+      .timeline-number { width: 36px; height: 36px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a onclick="navigateTo('beranda')" class="logo">
+          <div class="logo-icon">🌶️</div>
+          Cabai<span>Pedia</span>
+        </a>
+        
+        <ul class="nav-menu" id="navMenu">
+          <li><a onclick="navigateTo('beranda')" class="nav-link active" data-target="beranda">Beranda</a></li>
+          <li><a onclick="navigateTo('varietas')" class="nav-link" data-target="varietas">Varietas Cabai</a></li>
+          <li><a onclick="navigateTo('manfaat')" class="nav-link" data-target="manfaat">Manfaat & Nutrisi</a></li>
+          <li><a onclick="navigateTo('budidaya')" class="nav-link" data-target="budidaya">Panduan Budidaya</a></li>
+          <li><a onclick="navigateTo('resep')" class="nav-link" data-target="resep">Resep Sambal</a></li>
+          <li><a onclick="navigateTo('kontak')" class="nav-link" data-target="kontak">Kuis & FAQ</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== PAGE 1: BERANDA ==================== -->
+  <main id="page-beranda" class="page-section active-page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="hero-badge">🌶️ Encylopedia Cabai Terlengkap Indonesia</div>
+            <h1 class="hero-title">Jelajahi Dunia <span>Cabai</span> & Kelezatan Sensasi Pedasnya</h1>
+            <p class="hero-description">
+              Dari Cabai Rawit khas Nusantara hingga Carolina Reaper terpedas di dunia. Temukan informasi lengkap mengenai varietas, kandungan gizi, resep tradisional, hingga panduan budidaya langsung di sini.
+            </p>
+            <div class="hero-buttons">
+              <a onclick="navigateTo('varietas')" class="btn btn-primary">Lihat Katalog Cabai 🌶️</a>
+              <a onclick="navigateTo('resep')" class="btn btn-secondary">Resep Sambal 🍳</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-card-preview" id="scovilleGaugeBg">
+              <span class="section-tag">Kalkulator Kepedasan</span>
+              <h3 style="font-size: 1.4rem; margin-bottom: 12px; color: var(--text-main);">Simulasi Tingkat Scoville (SHU)</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Geser slider di bawah untuk melihat tingkat kepedasan cabai!</p>
+              
+              <input type="range" id="scovilleSlider" min="100" max="1000000" step="500" value="50000" style="width: 100%; accent-color: var(--chili-red); margin-bottom: 20px; cursor: pointer;">
+              
+              <div id="scovilleResult" style="padding: 16px; background-color: var(--bg-page); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--chili-red);">50.000 SHU</div>
+                <div style="font-size: 1.1rem; font-weight: 700; margin-top: 4px;">Tingkat: Pedas Mantap</div>
+                <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Contoh: Cabai Rawit Merah, Cabai Cayenne</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Varietas Cabai Utama</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2.2M</div>
+            <div class="stat-label">Maksimal SHU Scoville</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">240%</div>
+            <div class="stat-label">Kebutuhan Vitamin C/100g</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Tahapan Budidaya Mudah</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section style="padding: 40px 0 60px 0; background-color: var(--bg-page);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Varietas Populer</span>
+          <h2 class="section-title">Cabai Favorit di Indonesia & Dunia</h2>
+        </div>
+
+        <div class="cabaipedia-search-wrapper">
+          <form id="smartSearchForm" class="cabaipedia-search-form" onsubmit="handleSmartSearch(event)">
+            <div class="search-input-container">
+              <span class="search-icon-fixed">🔍</span>
+              <input type="text" id="cabaipediaSearchInput" placeholder="Cari jenis cabai, tips, atau resep..." autocomplete="off" required>
+              <button type="submit" class="search-btn">Cari</button>
+            </div>
+            <div id="searchNotification" class="search-notification"></div>
+          </form>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="chili-card-img">
+              <img src="https://awsimages.detik.net.id/visual/2022/06/13/cabai-rawit-merah-6_169.jpeg?w=1200" alt="Cabai Rawit Merah">
+            </div>
+            <div class="card-body-padding">
+              <div class="chili-card-header">
+                <div>
+                  <h3 class="chili-name">Cabai Rawit Merah</h3>
+                  <div class="chili-latin">Capsicum frutescens</div>
+                </div>
+                <span class="badge-heat heat-high">Sangat Pedas</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">
+                Raja pedas di warung gorengan dan masakan Nusantara. Berukuran kecil namun memiliki rasa pedas yang sangat menyengat.
+              </p>
+              <div class="scoville-bar-wrap">
+                <div class="scoville-info">
+                  <span>Scoville Heat Units:</span>
+                  <span style="color: var(--chili-red);">50.000 - 100.000 SHU</span>
+                </div>
+                <div class="scoville-bar"><div class="scoville-fill" style="width: 45%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="chili-card-img">
+              <img src="https://asset.kompas.com/crops/i-ZvyOeQ2DI5NnFkKPZRPpfOSPg=/252x125:853x525/1200x800/data/photo/2023/05/11/645c7453d22bf.jpg" alt="Cabai Merah Keriting">
+            </div>
+            <div class="card-body-padding">
+              <div class="chili-card-header">
+                <div>
+                  <h3 class="chili-name">Cabai Merah Keriting</h3>
+                  <div class="chili-latin">Capsicum annuum var. longum</div>
+                </div>
+                <span class="badge-heat heat-medium">Pedas</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">
+                Bentuknya panjang dan bergelombang. Memiliki tekstur renyah dan kadar air rendah, sangat cocok untuk hidangan oseng dan tumis.
+              </p>
+              <div class="scoville-bar-wrap">
+                <div class="scoville-info">
+                  <span>Scoville Heat Units:</span>
+                  <span style="color: var(--chili-red);">15.000 - 30.000 SHU</span>
+                </div>
+                <div class="scoville-bar"><div class="scoville-fill" style="width: 25%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="chili-card-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi1s2KVnD6B7sl_UZDutfcV3S2wEpSpIw5umtk3kUlIw&s=10" alt="Carolina Reaper">
+            </div>
+            <div class="card-body-padding">
+              <div class="chili-card-header">
+                <div>
+                  <h3 class="chili-name">Carolina Reaper</h3>
+                  <div class="chili-latin">Capsicum chinense</div>
+                </div>
+                <span class="badge-heat heat-extreme">Ekstrem</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">
+                Cabai terpedas legendaris di dunia dari Amerika Serikat. Memiliki rasa manis sebentar lalu disusul rasa terbakar dahsyat!
+              </p>
+              <div class="scoville-bar-wrap">
+                <div class="scoville-info">
+                  <span>Scoville Heat Units:</span>
+                  <span style="color: var(--chili-red);">up to 2.200.000 SHU</span>
+                </div>
+                <div class="scoville-bar"><div class="scoville-fill" style="width: 100%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a onclick="navigateTo('varietas')" class="btn btn-primary">Lihat Katalog Selengkapnya ➡️</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 70px 0; background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Jelajahi Portal</span>
+          <h2 class="section-title">Semua yang Perlu Kamu Ketahui Tentang Cabai</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card card-body-padding" style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 16px;">🥗</div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Manfaat Kesehatan</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
+              Ternyata cabai kaya akan Vitamin C melebihi buah jeruk! Kapsaisin juga membantu pembakaran kalori dan kesehatan jantung.
+            </p>
+            <a onclick="navigateTo('manfaat')" style="font-weight: 700; color: var(--chili-red);">Pelajari Nutrisi ➔</a>
+          </div>
+
+          <div class="card card-body-padding" style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 16px;">🌱</div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Panduan Budidaya</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
+              Ingin menanam cabai di rumah atau di pot? Ikuti 6 langkah mudah mulai dari penyemaian benih hingga pemanenan melimpah.
+            </p>
+            <a onclick="navigateTo('budidaya')" style="font-weight: 700; color: var(--chili-green);">Lihat Panduan ➔</a>
+          </div>
+
+          <div class="card card-body-padding" style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 16px;">🥘</div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Resep Sambal Nusantara</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px;">
+              Dapatkan takaran resep rahasia Sambal Terasi, Sambal Matah, Sambal Bawang Surabaya, hingga Chili Oil garing kekinian.
+            </p>
+            <a onclick="navigateTo('resep')" style="font-weight: 700; color: var(--chili-orange);">Coba Resep ➔</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PAGE 2: VARIETAS ==================== -->
+  <main id="page-varietas" class="page-section">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">🌶️ Katalog & Database Varietas Cabai</h1>
+        <p class="page-subtitle">
+          Temukan informasi lengkap dari berbagai jenis cabai lokal Indonesia hingga cabai paling ekstrem di dunia, lengkap dengan Skala Scoville (SHU), profil rasa, dan penggunaannya.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 80px;">
+      <div class="container">
+        <div class="filter-box">
+          <div class="search-input-wrap" style="flex: 1; min-width: 250px;">
+            <input type="text" id="varietasSearchInput" class="search-input" placeholder="🔍 Cari jenis cabai atau asal negara...">
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Semua Jenis</button>
+            <button class="filter-btn" data-filter="sedang">Sedang</button>
+            <button class="filter-btn" data-filter="pedas">Pedas</button>
+            <button class="filter-btn" data-filter="sangat-pedas">Sangat Pedas</button>
+            <button class="filter-btn" data-filter="ekstrem">Ekstrem</button>
+          </div>
+        </div>
+
+        <div class="grid-3" id="varietasContainer">
+          <!-- Render Dinamis oleh JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PAGE 3: MANFAAT ==================== -->
+  <main id="page-manfaat" class="page-section">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">🥗 Manfaat Kesehatan & Nutrisi Cabai</h1>
+        <p class="page-subtitle">
+          Bukan sekadar penambah rasa pedas, cabai merupakan superfood yang kaya akan senyawa Kapsaisin, Vitamin C melimpah, dan zat antioksidan bagi tubuh.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 60px;">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Khasiat Kesehatan</span>
+          <h2 class="section-title">6 Manfaat Utama Cabai Bagi Tubuh</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card benefit-card">
+            <div class="benefit-icon">🔥</div>
+            <div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Meningkatkan Metabolisme</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Kapsaisin memicu proses termogenesis yang membantu membakar kalori dan lemak tubuh secara alami hingga 8% lebih cepat.
+              </p>
+            </div>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-icon">🍊</div>
+            <div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Kaya Vitamin C Melimpah</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                100 gram cabai rawit mengandung Vitamin C jauh lebih tinggi daripada buah jeruk matang (mencapai 240% Kebutuhan Harian).
+              </p>
+            </div>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-icon">❤️</div>
+            <div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Menjaga Kesehatan Jantung</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Senyawa kapsaisinoids membantu menurunkan kadar kolesterol jahat (LDL) dan mencegah pembekuan darah arteri.
+              </p>
+            </div>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-icon">😃</div>
+            <div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Memicu Hormon Endorfin</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Sensasi terbakar saat makan pedas merangsang otak melepaskan hormon endorfin dan dopamin yang menimbulkan perasaan gembira.
+              </p>
+            </div>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-icon">💊</div>
+            <div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Pereda Nyeri Alami</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Kapsaisin sering diekstrak sebagai bahan utama krim pereda nyeri otot, persendian, dan sakit kepala migraine.
+              </p>
+            </div>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-icon">🛡️</div>
+            <div>
+              <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Tinggi Antioksidan</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">
+                Mengandung Karotenoid, Beta-karoten, dan Lutein yang berfungsi melawan radikal bebas dan menjaga daya tahan tubuh.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0; background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Nilai Gizi</span>
+          <h2 class="section-title">Kandungan Nutrisi per 100 gram Cabai Merah Segar</h2>
+        </div>
+
+        <div class="nutrition-table-wrap">
+          <table class="nutrition-table">
+            <thead>
+              <tr>
+                <th>Komponen Nutrisi / Senyawa</th>
+                <th>Jumlah per 100 gram</th>
+                <th>Manfaat & Fungsi Utama</th>
+              </tr>
+            </thead>
+            <tbody id="nutrisiTableBody">
+              <!-- Render Dinamis oleh JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 70px 0; background-color: var(--bg-page);">
+      <div class="container">
+        <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+          <div class="card card-body-padding" style="border-left: 6px solid var(--chili-orange);">
+            <h3 style="font-size: 1.3rem; color: var(--chili-orange); margin-bottom: 12px;">🥛 Tips Penawar Lidah Terbakar</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;">
+              Jangan minum air dingin saat kepedasan! Kapsaisin bersifat larut dalam lemak, bukan air.
+            </p>
+            <ul style="font-size: 0.9rem; color: var(--text-main); line-height: 1.8;">
+              <li>✅ <strong>Minum Susu Segar atau Yoghurt:</strong> Protein Kasein dalam susu mengikat kapsaisin.</li>
+              <li>✅ <strong>Makan Nasi Warm atau Roti:</strong> Karbohidrat menyerap minyak kapsaisin.</li>
+              <li>✅ <strong>Perasan Jeruk / Gula pasir:</strong> Asam sitrat menetralkan alkali senyawa pedas.</li>
+            </ul>
+          </div>
+
+          <div class="card card-body-padding" style="border-left: 6px solid var(--chili-red);">
+            <h3 style="font-size: 1.3rem; color: var(--chili-red); margin-bottom: 12px;">⚠️ Anjuran Konsumsi Bijak</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px;">
+              Meskipun sehat, konsumsi cabai berlebihan dapat memicu gangguan pencernaan bagi sebagian orang.
+            </p>
+            <ul style="font-size: 0.9rem; color: var(--text-main); line-height: 1.8;">
+              <li>⚠️ <strong>Penderita GERD / Asam Lambung:</strong> Batasi makan cabai saat perut kosong.</li>
+              <li>⚠️ <strong>IBS (Irritable Bowel Syndrome):</strong> Sensitivitas usus dapat menyebabkan mules parah.</li>
+              <li>⚠️ <strong>Sensitivitas Kulit:</strong> Gunakan sarung tangan saat memotong cabai jenis Habanero atau Reaper!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PAGE 4: BUDIDAYA ==================== -->
+  <main id="page-budidaya" class="page-section">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">🌱 Panduan Lengkap Budidaya Cabai</h1>
+        <p class="page-subtitle">
+          Panduan taktis step-by-step menanam tanaman cabai agar berbuah lebat, bebas penyakit, dan panen melimpah baik di lahan maupun dalam pot / polybag rumah.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Persiapan Awal</span>
+          <h2 class="section-title">Syarat Optimal Tumbuh Tanaman Cabai</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card card-body-padding">
+            <h3 style="font-size: 1.2rem; color: var(--chili-green); margin-bottom: 8px;">☀️ Cahaya Matahari</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+              Tanaman cabai membutuhkan penyinaran matahari penuh sekurang-kurangnya 8 hingga 10 jam sehari agar proses pembungaan maksimal.
+            </p>
+          </div>
+
+          <div class="card card-body-padding">
+            <h3 style="font-size: 1.2rem; color: var(--chili-red); margin-bottom: 8px;">🌡️ Suhu & Iklim</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+              Suhu ideal pertumbuhan berkisar antara 24°C hingga 28°C. Dapat tumbuh dari dataran rendah hingga dataran tinggi.
+            </p>
+          </div>
+
+          <div class="card card-body-padding">
+            <h3 style="font-size: 1.2rem; color: var(--chili-orange); margin-bottom: 8px;">🌱 Keasaman Tanah (pH)</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+              Tanah gembur kaya bahan organik dengan pH optimal 6.0 - 7.0. Jika terlalu asam, tambahkan kapur Dolomit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0; background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Langkah Demi Langkah</span>
+          <h2 class="section-title">6 Tahapan Menanam Cabai Sukses Panen</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-number">1</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Pemilihan Benih & Penyemaian</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Pilih biji cabai dari buah yang sudah benar-benar tua dan sehat. Rendam biji dalam air hangat (40°C) selama 3 jam. Biji yang tenggelam adalah biji berkualitas unggul. Semai di media campuran tanah gembur dan kompos (1:1) selama 21 hari hingga tumbuh 4-5 helai daun.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-number">2</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Pengolahan Media Tanam & Bedengan</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Cangkul tanah sedalam 30 cm, lalu campurkan pupuk kandang/kompos matang. Jika di pot, gunakan campuran tanah, sekam bakar, dan pupuk kandang (2:1:1). Diamkan media tanam selama 1 minggu sebelum ditanami agar mikroorganisme tanah stabil.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-number">3</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Pindah Tanam (Transplanting)</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Lakukan pemindahan bibit pada sore hari untuk menghindari stres tanaman akibat panas matahari. Tanam bibit dengan jarak tanam 50x60 cm, lalu siram dengan air secukupnya hingga media lembap.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-number">4</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Perawatan & Pemupukan Susulan</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Siram tanaman 1-2 kali sehari (pagi dan sore). Lakukan rempel (pemotongan) tunas air di ketiak daun bagian bawah umur 20 hari agar nutrisi terfokus ke batang utama. Berikan pupuk NPK cair susulan setiap 10 hari sekali.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-number">5</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Pengendalian Hama & Penyakit</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Waspadai hama <strong>Lalat Buah</strong> (penyebab busuk buah) dan <strong>Kutu Daun/Thrips</strong> (penyebab daun keriting). Gunakan perangkap metil eugenol atau semprotkan pestisida organik larutan sabun pencuci piring + ekstrak daun mimba secara berkala.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-number">6</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Masa Panen & Pasca Panen</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Cabai siap dipanen pada umur 75 - 90 hari setelah tanam. Petik cabai beserta tangkainya di pagi hari saat warna buah merah 80%-90%. Panen dapat dilakukan 3-5 hari sekali selama 3-6 bulan produktif!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0; background-color: var(--bg-page);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Solusi Masalah</span>
+          <h2 class="section-title">Gejala Hama Umum & Solusinya</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card card-body-padding">
+            <h3 style="font-size: 1.15rem; color: var(--chili-red); margin-bottom: 8px;">🍂 Daun Keriting / Menguning</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">
+              <strong>Penyebab:</strong> Serangan hama Thrips, Tungau, atau Kutu Daun.
+            </p>
+            <p style="font-size: 0.88rem; color: var(--text-main);">
+              <strong>Solusi:</strong> Semprotkan minyak neem (mimba) atau insektisida berbahan aktif abamektin sore hari.
+            </p>
+          </div>
+
+          <div class="card card-body-padding">
+            <h3 style="font-size: 1.15rem; color: var(--chili-red); margin-bottom: 8px;">🔴 Bercak Antraknosa (Patek)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">
+              <strong>Penyebab:</strong> Jamur Colletotrichum saat musim hujan lembap.
+            </p>
+            <p style="font-size: 0.88rem; color: var(--text-main);">
+              <strong>Solusi:</strong> Petik dan buang buah yang terinfeksi jauh-jauh, lalu semprotkan fungisida tembaga hidroksida.
+            </p>
+          </div>
+
+          <div class="card card-body-padding">
+            <h3 style="font-size: 1.15rem; color: var(--chili-red); margin-bottom: 8px;">🪰 Buah Rontok & Busuk</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">
+              <strong>Penyebab:</strong> Sengatan Lalat Buah (Bactrocera).
+            </p>
+            <p style="font-size: 0.88rem; color: var(--text-main);">
+              <strong>Solusi:</strong> Pasang botol perangkap lalat buah menggunakan petrogenol di sekeliling kebun.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PAGE 5: RESEP ==================== -->
+  <main id="page-resep" class="page-section">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">🥘 Resep Sambal & Olahan Cabai Khas</h1>
+        <p class="page-subtitle">
+          Nikmati kelezatan aneka resep sambal autentik Indonesia dan olahan minyak cabai modern lengkap dengan takaran bahan dan langkah pembuatannya.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 70px;">
+      <div class="container">
+        <div class="grid-3" id="resepContainer">
+          <!-- Render Dinamis oleh JS -->
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0; background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Tips Kuliner</span>
+          <h2 class="section-title">Rahasia Sambal Ulek Tahan Simpan Hingga 1 Bulan</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card card-body-padding">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🍳</div>
+            <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Goreng / Matangkan Bahan</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Pastikan cabai dan bawang ditumis atau digoreng hingga kadar airnya berkurang sebelum diulek. Air adalah penyebab utama jamur pada sambal.
+            </p>
+          </div>
+
+          <div class="card card-body-padding">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🫙</div>
+            <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Pengawetan Minyak Alami</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Siram sambal dengan minyak goreng yang cukup berlimpah hingga seluruh permukaan sambal terendam minyak saat disimpan dalam toples.
+            </p>
+          </div>
+
+          <div class="card card-body-padding">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🥄</div>
+            <h3 style="font-size: 1.15rem; margin-bottom: 8px;">Sterilisasi Toples & Sendok</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Gunakan jar kaca yang sudah disiram air panas dan dikeringkan. Selalu ambil sambal dengan sendok bersih & kering!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PAGE 6: KONTAK / KUIS & FAQ ==================== -->
+  <main id="page-kontak" class="page-section">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">🎯 Kuis Toleransi Pedas & Tanya Jawab</h1>
+        <p class="page-subtitle">
+          Uji sejauh mana ketahanan lidahmu terhadap rasa pedas melalui kuis interaktif di bawah ini dan temukan jawaban dari pertanyaan yang paling sering diajukan!
+        </p>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 70px;">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Kuis Interaktif</span>
+          <h2 class="section-title">Tes Tingkat Toleransi Pedasmu! 🌶️</h2>
+        </div>
+
+        <div class="quiz-card" id="quizBox">
+          <!-- Render Dinamis oleh JS -->
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 70px 0; background-color: var(--bg-surface);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Tanya Jawab</span>
+          <h2 class="section-title">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Berapa lama cabai segar dapat disimpan di kulkas?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Cabai segar dapat bertahan 2 hingga 3 minggu di kulkas jika disimpan dengan benar. Caranya: buang tangkainya, alasi wadah kedap udara dengan tisu dapur, dan masukkan 1 siung bawang putih kupas untuk mencegah pembusukan.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Apakah aman mengonsumsi cabai setiap hari?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Bagi orang yang sehat dan tidak memiliki riwayat maag atau GERD akut, konsumsi cabai secara wajar setiap hari sangat aman dan justru memberikan pasokan Vitamin C serta meningkatkan metabolisme tubuh.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Bagaimana cara mengatasi masakan yang terlalu pedas?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Kamu bisa menambahkan bahan berlemak atau pemanis seperti santan, susu, kentang rebus, atau sedikit gula merah/madu untuk menetralkan dan menyeimbangkan rasa pedas yang berlebihan.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Cabai apa yang paling pedas berasal dari Indonesia?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Salah satu cabai lokal terpedas di Indonesia adalah Cabai Katokkon khas Tana Toraja (Sulawesi Selatan) dan Cabai Hiyung khas Tapin (Kalimantan Selatan) yang tingkat kepedasannya bisa mencapai 10-17 kali lipat cabai rawit biasa!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 70px 0; background-color: var(--bg-page);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Hubungi Kami</span>
+          <h2 class="section-title">Kirim Pesan atau Masukan</h2>
+        </div>
+
+        <div style="max-width: 650px; margin: 0 auto; background: var(--bg-surface); padding: 35px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);">
+          <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan kamu telah terkirim.'); this.reset();">
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-weight: 700; margin-bottom: 8px;">Nama Lengkap</label>
+              <input type="text" required placeholder="Masukkan nama kamu..." style="width: 100%; padding: 12px 16px; border: 2px solid #E0E0E0; border-radius: var(--radius-sm); font-family: inherit; font-size: 1rem;">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-weight: 700; margin-bottom: 8px;">Alamat Email</label>
+              <input type="email" required placeholder="email@contoh.com" style="width: 100%; padding: 12px 16px; border: 2px solid #E0E0E0; border-radius: var(--radius-sm); font-family: inherit; font-size: 1rem;">
+            </div>
+
+            <div style="margin-bottom: 25px;">
+              <label style="display: block; font-weight: 700; margin-bottom: 8px;">Pesan / Pertanyaan</label>
+              <textarea rows="4" required placeholder="Tuliskan pertanyaan atau sarankan varietas cabai baru..." style="width: 100%; padding: 12px 16px; border: 2px solid #E0E0E0; border-radius: var(--radius-sm); font-family: inherit; font-size: 1rem;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan ✉️</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Cabai<span>Pedia</span></div>
+          <p class="footer-desc">
+            Portal informasi terlengkap seputar dunia cabai, varietas, nutrisi, panduan budidaya, dan resep olahan khas Nusantara.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigasi Halaman</h4>
+          <ul class="footer-links">
+            <li><a onclick="navigateTo('beranda')">Beranda</a></li>
+            <li><a onclick="navigateTo('varietas')">Katalog Varietas</a></li>
+            <li><a onclick="navigateTo('manfaat')">Manfaat & Nutrisi</a></li>
+            <li><a onclick="navigateTo('budidaya')">Panduan Budidaya</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Fitur Interaktif</h4>
+          <ul class="footer-links">
+            <li><a onclick="navigateTo('resep')">Resep Sambal</a></li>
+            <li><a onclick="navigateTo('kontak')">Kuis Toleransi Pedas</a></li>
+            <li><a onclick="navigateTo('kontak')">Tanya Jawab (FAQ)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CabaiPedia Nusantara. Dibuat dengan HTML, CSS, & Vanilla JS.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DATA & LOGIKA JAVASCRIPT -->
+  <script>
+    /* ==========================================================================
+       1. DATASET UTAMA
+       ========================================================================== */
+    const DATA_CABAI = [
+      {
+        id: 'rawit-merah',
+        nama: 'Cabai Rawit Merah',
+        namaLatin: 'Capsicum frutescens',
+        kategori: 'sangat-pedas',
+        tingkatPedasText: 'Sangat Pedas',
+        shu: '50.000 - 100.000 SHU',
+        shuPercent: 40,
+        asal: 'Indonesia / Asia Tenggara',
+        rasa: 'Pedas menyengat, sedikit fruity',
+        penggunaan: 'Sambal bawang, gorengan, tumisan pedas',
+        deskripsi: 'Cabai favorit masyarakat Indonesia yang berukuran kecil namun memberikan rasa pedas yang sangat tajam dan instan.',
+        img: 'https://awsimages.detik.net.id/community/media/visual/2022/06/08/ilustrasi-cabai-rawit-merah_169.jpeg?w=1200'
+      },
+      {
+        id: 'merah-besar',
+        nama: 'Cabai Merah Besar',
+        namaLatin: 'Capsicum annuum L.',
+        kategori: 'sedang',
+        tingkatPedasText: 'Sedang / Manis',
+        shu: '300 - 500 SHU',
+        shuPercent: 10,
+        asal: 'Meksiko & Amerika Selatan',
+        rasa: 'Manis gurih dengan rasa pedas lembut',
+        penggunaan: 'Bumbu halus rendang, balado, pewarna alami masakan',
+        deskripsi: 'Ukuran besar dengan permukaan licin. Sering digunakan untuk memberikan warna merah segar tanpa tingkat kepedasan yang berlebih.',
+        img: 'https://asset.kompas.com/crops/DdaJRlMo5hp4_fNeqVU_3_hnkog=/53x0:570x345/1200x800/data/photo/2023/07/31/64c73948d58cd.jpg'
+      },
+      {
+        id: 'keriting',
+        nama: 'Cabai Merah Keriting',
+        namaLatin: 'Capsicum annuum var. longum',
+        kategori: 'pedas',
+        tingkatPedasText: 'Pedas',
+        shu: '15.000 - 30.000 SHU',
+        shuPercent: 25,
+        asal: 'Indonesia & Asia',
+        rasa: 'Pedas seimbang dengan kadar air rendah',
+        penggunaan: 'Sambal goreng, oseng-oseng, olahan balado',
+        deskripsi: 'Berbentuk panjang dan bergelombang (keriting). Teksturnya renyah dan memiliki kadar air yang lebih sedikit.',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPjUFhNK3Cibji9ZmqTW7H9WcbJN8oXWlFC4ESugKBg&s=10'
+      },
+      {
+        id: 'rawit-hijau',
+        nama: 'Cabai Rawit Hijau',
+        namaLatin: 'Capsicum frutescens',
+        kategori: 'pedas',
+        tingkatPedasText: 'Pedas Segar',
+        shu: '30.000 - 50.000 SHU',
+        shuPercent: 30,
+        asal: 'Indonesia',
+        rasa: 'Pedas segar dengan aroma khas cabai muda',
+        penggunaan: 'Pelengkap tahu goreng, bakwan, gorengan, sambal hijau',
+        deskripsi: 'Dipanen saat masih muda (berwarna hijau). Sangat populer di warung gorengan karena rasa pedasnya yang khas.',
+        img: 'https://images.tokopedia.net/img/cache/700/VqbcmM/2022/7/3/d1ea05df-dd10-4bf6-bdef-5e46ceb9daa8.jpg.webp'
+      },
+      {
+        id: 'katokkon',
+        nama: 'Cabai Katokkon (Toraja)',
+        namaLatin: 'Capsicum chinense',
+        kategori: 'ekstrem',
+        tingkatPedasText: 'Sangat Pedas / Ekstrem',
+        shu: '300.000 - 600.000 SHU',
+        shuPercent: 75,
+        asal: 'Tana Toraja, Sulawesi Selatan',
+        rasa: 'Aroma khas wangi fruity dengan kepedasan tinggi',
+        penggunaan: 'Masakan khas Toraja (Pa\'piong), sambal tradisional',
+        deskripsi: 'Cabai unik kebanggaan Toraja yang bentuknya mirip paprika mini. Memiliki tingkat kepedasan luar biasa.',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq91SeQKJGFkGajloVm2FxB8YcoxIKGM2Ay64TEhFmkQ&s=10'
+      },
+      {
+        id: 'habanero',
+        nama: 'Cabai Habanero',
+        namaLatin: 'Capsicum chinense',
+        kategori: 'sangat-pedas',
+        tingkatPedasText: 'Sangat Pedas',
+        shu: '100.000 - 350.000 SHU',
+        shuPercent: 60,
+        asal: 'Amazon / Karibia / Meksiko',
+        rasa: 'Fruity, citrusy, pedas intens berdurasi lama',
+        penggunaan: 'Hot sauce internasional, marinasi daging, salsa',
+        deskripsi: 'Berbentuk seperti lonceng kecil berwarna oranye atau merah. Populer sebagai bahan utama saus pedas.',
+        img: 'https://www.thespruceeats.com/thmb/pMLb3qCXPpTSkZCfe7eY6KKNy_U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1167868879-1bc8a079f67b410c800638fcdee88a1a.jpg'
+      },
+      {
+        id: 'jalapeno',
+        nama: 'Cabai Jalapeño',
+        namaLatin: 'Capsicum annuum',
+        kategori: 'sedang',
+        tingkatPedasText: 'Sedang',
+        shu: '2.500 - 8.000 SHU',
+        shuPercent: 18,
+        asal: 'Jalapa, Meksiko',
+        rasa: 'Renyah, sedikit pedas dengan keasaman segar',
+        penggunaan: 'Acar (pickles), nacho topping, burger, jalapeño poppers',
+        deskripsi: 'Salah satu cabai paling terkenal di dunia barat. Daging buahnya tebal dan lezat diawetkan menjadi acar.',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaIeLfvgLUKVXdrV6I4FrblnVeetpuNMZbFLtltTRiPw&s=10'
+      },
+      {
+        id: 'carolina-reaper',
+        nama: 'Carolina Reaper',
+        namaLatin: 'Capsicum chinense',
+        kategori: 'ekstrem',
+        tingkatPedasText: 'Ekstrem (Cabai Terpedas)',
+        shu: '1.500.000 - 2.200.000 SHU',
+        shuPercent: 100,
+        asal: 'South Carolina, Amerika Serikat',
+        rasa: 'Manis sebentar lalu terbakar dahsyat',
+        penggunaan: 'Spicy challenge, ekstrak kapsaisin, saus super pedas',
+        deskripsi: 'Pernah memegang rekor Guinness World Records sebagai cabai terpedas di dunia dengan ekor khas seperti sengatan kalajengking.',
+        img: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/05/02043801/X-Fakta-Carolina-Reaper-Cabai-Terpedas-di-Dunia.jpg.webp'
+      },
+      {
+        id: 'ghost-pepper',
+        nama: 'Ghost Pepper (Bhut Jolokia)',
+        namaLatin: 'Capsicum chinense',
+        kategori: 'ekstrem',
+        tingkatPedasText: 'Ekstrem',
+        shu: '855.000 - 1.041.427 SHU',
+        shuPercent: 88,
+        asal: 'Assam, India',
+        rasa: 'Smoky, manis tipis, rasa terbakar perlahan',
+        penggunaan: 'Masakan kari pedas India, saus tantangan, pengusir hama',
+        deskripsi: 'Cabai legendaris dari India timur laut. Rasa pedasnya perlahan membakar tenggorokan hingga 15 menit.',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDqR5RNCtNSQeMdxgSU85cnc9CzCdIs4Ubbk5ryKAFOw&s=10'
+      }
+    ];
+
+    const DATA_NUTRISI = [
+      { komponen: 'Kapsaisin (Capsaicin)', jumlah: '0.1% - 1%', fungsi: 'Senyawa utama pemantik pedas, membakar kalori & pereda nyeri' },
+      { komponen: 'Vitamin C', jumlah: '143.7 mg (240% DV)', fungsi: 'Antioksidan kuat, menjaga imun tubuh & daya tahan sel' },
+      { komponen: 'Vitamin A (Beta-Karoten)', jumlah: '952 IU (19% DV)', fungsi: 'Menjaga kesehatan mata, kulit, dan membran mukosa' },
+      { komponen: 'Vitamin B6 (Pyridoxine)', jumlah: '0.5 mg (39% DV)', fungsi: 'Mendukung metabolisme energi dan kesehatan saraf' },
+      { komponen: 'Kalium (Potassium)', jumlah: '322 mg (9% DV)', fungsi: 'Menjaga tekanan darah stabil dan fungsi otot' },
+      { komponen: 'Zat Besi (Iron)', jumlah: '1.0 mg (6% DV)', fungsi: 'Pembentukan sel darah merah dan transportasi oksigen' }
+    ];
+
+    const DATA_RESEP = [
+      {
+        nama: 'Sambal Terasi Khas Jawa',
+        asal: 'Jawa',
+        tingkatPedas: 'Pedas Mantap',
+        waktu: '15 Menit',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLfD7uXB50O-hkddn6ojjvjM9_h1QabrEe6CQTD8o2Yg&s=10',
+        bahan: [
+          '10 buah Cabai Rawit Merah',
+          '5 buah Cabai Merah Keriting',
+          '5 siung Bawang Merah',
+          '2 siung Bawang Putih',
+          '1 buah Tomat Merah',
+          '1 sdt Terasi Bakar berkualitas',
+          'Garam, Gula Merah & Minyak Goreng secukupnya'
+        ],
+        langkah: [
+          'Goreng cabai, bawang, dan tomat hingga layu.',
+          'Ulek halus bersama terasi bakar, garam, dan gula merah.',
+          'Siram dengan sedikit minyak panas sisa menggoreng.',
+          'Sajikan hangat bersama ayam goreng dan lalapan segar.'
+        ]
+      },
+      {
+        nama: 'Sambal Matah Bali',
+        asal: 'Bali',
+        tingkatPedas: 'Pedas Segar',
+        waktu: '10 Menit',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Ty8_jgga2DuT-LCxZ4f1DePYG5GLqqHmrMV6yl0Jpg&s=10',
+        bahan: [
+          '15 buah Cabai Rawit Merah (iris tipis)',
+          '8 siung Bawang Merah (iris tipis)',
+          '3 batang Serai (ambil putihnya, iris halus)',
+          '4 lembar Daun Jeruk (buang tulang, iris halus)',
+          '1 sdt Terasi (dibakar & dihaluskan)',
+          '1 sdm Air Perasan Jeruk Nipis',
+          '3 sdm Minyak Kelapa Panas',
+          'Garam secukupnya'
+        ],
+        langkah: [
+          'Campurkan irisan cabai, bawang merah, serai, dan daun jeruk dalam mangkuk.',
+          'Tambahkan garam, terasi halus, dan remas perlahan agar aroma keluar.',
+          'Siram dengan minyak kelapa yang benar-benar panas.',
+          'Beri perasan jeruk nipis dan aduk rata sebelum disajikan.'
+        ]
+      },
+      {
+        nama: 'Sambal Bawang Surabaya',
+        asal: 'Jawa Timur',
+        tingkatPedas: 'Sangat Pedas',
+        waktu: '10 Menit',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8pq8qX7HTwLIN3jmHt-4wu6bfYl5RMEcD4OeFFU8E-A&s=10',
+        bahan: [
+          '20 buah Cabai Rawit Merah',
+          '8 siung Bawang Merah',
+          '3 siung Bawang Putih',
+          '4 sdm Minyak Goreng Panas',
+          'Garam dan Penyedap Rasa secukupnya'
+        ],
+        langkah: [
+          'Ulek kasar cabai rawit, bawang merah, bawang putih, dan garam.',
+          'Panaskan minyak goreng hingga sangat panas.',
+          'Siramkan minyak panas ke atas ulekan sambal bawang.',
+          'Aduk rata dan nikmati kelezatan pedas gurihnya!'
+        ]
+      },
+      {
+        nama: 'Chili Oil Crisp (Minyak Cabai)',
+        asal: 'Modern / Oriental',
+        tingkatPedas: 'Sedang - Pedas',
+        waktu: '25 Menit',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ug2TOZo-gdkLH6C-p0rqjr9H10ULdpSlLPR9Lx-qZA&s=10',
+        bahan: [
+          '50 gr Cabai Kering (dihaluskan kasar / chili flakes)',
+          '200 ml Minyak Goreng / Minyak Wijen',
+          '4 siung Bawang Putih (cincang halus)',
+          '2 Bunga Lawang & 1 Kayu Manis',
+          '1 sdm Kecap Asin & 1 sdt Gula'
+        ],
+        langkah: [
+          'Panaskan minyak bersama bunga lawang dan kayu manis dengan api kecil hingga harum.',
+          'Goreng cincangan bawang putih hingga krispi kecokelatan, tiriskan.',
+          'Tuangkan minyak panas ke wadah tahan panas berisi chili flakes dan bawang krispi.',
+          'Bumbui dengan kecap asin dan gula. Simpan dalam toples kaca rapat.'
+        ]
+      }
+    ];
+
+    const DATA_KUIS = [
+      {
+        pertanyaan: "Berapa sering kamu makan makanan pedas dalam seminggu?",
+        pilihan: [
+          { teks: "Hampir tidak pernah / takut mules", poin: 1 },
+          { teks: "1 - 2 kali seminggu kalau ada sambal manis", poin: 2 },
+          { teks: "Hampir setiap hari wajib ada sambal!", poin: 3 },
+          { teks: "Tiap makan tanpa cabai terasa hambar", poin: 4 }
+        ]
+      },
+      {
+        pertanyaan: "Jenis cabai mana yang paling sering kamu konsumsi?",
+        pilihan: [
+          { teks: "Cabai Merah Besar (bumbu saus)", poin: 1 },
+          { teks: "Cabai Keriting / Jalapeño", poin: 2 },
+          { teks: "Cabai Rawit Merah (makan sama gorengan)", poin: 3 },
+          { teks: "Cabai Katokkon / Habanero / Samyang pedas 3x", poin: 4 }
+        ]
+      },
+      {
+        pertanyaan: "Apa reaksi tubuhmu saat makan sambal super pedas?",
+        pilihan: [
+          { teks: "Keringat dingin dan menangis", poin: 1 },
+          { teks: "Berkeringat sedikit tapi tetap bisa menikmati", poin: 2 },
+          { teks: "Makin berkeringat makin nikmat dan nambah nasi!", poin: 3 },
+          { teks: "Biasa saja, seperti minum air putih", poin: 4 }
+        ]
+      }
+    ];
+
+    /* ==========================================================================
+       2. SPA NAVIGATION LOGIC
+       ========================================================================== */
+    function navigateTo(pageId, queryParam = '') {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active-page'));
+      const targetPage = document.getElementById(`page-${pageId}`);
+      if (targetPage) targetPage.classList.add('active-page');
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('data-target') === pageId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      const navMenu = document.getElementById('navMenu');
+      if (navMenu) navMenu.classList.remove('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (pageId === 'varietas' && queryParam) {
+        const vSearch = document.getElementById('varietasSearchInput');
+        if (vSearch) {
+          vSearch.value = queryParam;
+          vSearch.dispatchEvent(new Event('input'));
+        }
+      }
+    }
+
+    /* ==========================================================================
+       3. SMART SEARCH (PERBAIKAN BUG HILANG HALAMAN 404)
+       ========================================================================== */
+    function handleSmartSearch(event) {
+      event.preventDefault();
+      
+      const inputElement = document.getElementById('cabaipediaSearchInput');
+      const notificationElement = document.getElementById('searchNotification');
+      const query = inputElement.value.trim().toLowerCase();
+      
+      if (!query) return;
+
+      // PERBAIKAN: Daftar kata kunci lengkap tanpa 'capricorn', mencakup varietas & topik
+      const localKeywords = [
+        "rawit", "merah", "hijau", "besar", "keriting", "katokkon", 
+        "habanero", "jalapeno", "carolina", "reaper", "ghost", "pepper",
+        "budidaya", "pupuk", "hama", "penyakit", "panen", "resep", "sambal", "manfaat"
+      ];
+
+      const isExistLocally = localKeywords.some(keyword => query.includes(keyword));
+
+      if (isExistLocally) {
+        notificationElement.style.color = "#2e7d32";
+        notificationElement.textContent = "Topik ditemukan di CabaiPedia! Mengarahkan halaman...";
+        
+        setTimeout(() => {
+          notificationElement.textContent = "";
+          // PERBAIKAN BUG: Langsung beralih ke halaman varietas yang valid
+          navigateTo('varietas', query);
+        }, 800);
+
+      } else {
+        notificationElement.style.color = "#d32f2f"; 
+        notificationElement.textContent = "Tidak ditemukan di website. Dialihkan ke pencarian Google...";
+        
+        setTimeout(() => {
+          notificationElement.textContent = "";
+          const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(query + " cabai")}`;
+          window.open(googleSearchUrl, '_blank');
+        }, 1000);
+      }
+    }
+
+    /* ==========================================================================
+       4. INITIALIZERS & RENDERERS
+       ========================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileNav();
+      initVarietasPage();
+      initNutrisiPage();
+      initResepPage();
+      initKuis();
+      initFAQ();
+      initScovilleCalculator();
+    });
+
+    function initMobileNav() {
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+      }
+    }
+
+    function initVarietasPage() {
+      const container = document.getElementById('varietasContainer');
+      const searchInput = document.getElementById('varietasSearchInput');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+
+      if (!container) return;
+
+      let currentCategory = 'all';
+      let searchQuery = '';
+
+      function renderCards() {
+        container.innerHTML = '';
+
+        const filteredData = DATA_CABAI.filter(chili => {
+          const matchCategory = (currentCategory === 'all') || (chili.kategori === currentCategory);
+          const matchSearch = chili.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              chili.namaLatin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              chili.deskripsi.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              chili.asal.toLowerCase().includes(searchQuery.toLowerCase());
+          return matchCategory && matchSearch;
+        });
+
+        if (filteredData.length === 0) {
+          container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 12px; border: 1px dashed var(--chili-red);">
+              <h3 style="color: var(--chili-red); margin-bottom: 8px;">🌶️ Varietas Tidak Ditemukan</h3>
+              <p style="color: var(--text-muted);">Coba gunakan kata kunci pencarian lain atau ganti filter kepedasan.</p>
+            </div>
+          `;
+          return;
+        }
+
+        filteredData.forEach(chili => {
+          let badgeClass = 'heat-medium';
+          if (chili.kategori === 'sangat-pedas') badgeClass = 'heat-high';
+          if (chili.kategori === 'ekstrem') badgeClass = 'heat-extreme';
+          if (chili.kategori === 'sedang') badgeClass = 'heat-medium';
+
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div class="chili-card-img">
+              <img src="${chili.img}" alt="${chili.nama}">
+            </div>
+            <div class="card-body-padding">
+              <div class="chili-card-header">
+                <div>
+                  <h3 class="chili-name">${chili.nama}</h3>
+                  <div class="chili-latin">${chili.namaLatin}</div>
+                </div>
+                <span class="badge-heat ${badgeClass}">${chili.tingkatPedasText}</span>
+              </div>
+              
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">${chili.deskripsi}</p>
+              
+              <div class="scoville-bar-wrap">
+                <div class="scoville-info">
+                  <span>Tingkat Scoville (SHU):</span>
+                  <span style="color: var(--chili-red);">${chili.shu}</span>
+                </div>
+                <div class="scoville-bar">
+                  <div class="scoville-fill" style="width: ${chili.shuPercent}%;"></div>
+                </div>
+              </div>
+
+              <div class="chili-details">
+                <div class="chili-detail-row">
+                  <span class="chili-detail-label">📍 Asal Utama:</span>
+                  <span class="chili-detail-value">${chili.asal}</span>
+                </div>
+                <div class="chili-detail-row">
+                  <span class="chili-detail-label">👅 Karakter Rasa:</span>
+                  <span class="chili-detail-value">${chili.rasa}</span>
+                </div>
+                <div class="chili-detail-row">
+                  <span class="chili-detail-label">🍳 Cocok Untuk:</span>
+                  <span class="chili-detail-value">${chili.penggunaan}</span>
+                </div>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          renderCards();
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-filter');
+          renderCards();
+        });
+      });
+
+      renderCards();
+    }
+
+    function initNutrisiPage() {
+      const tableBody = document.getElementById('nutrisiTableBody');
+      if (!tableBody) return;
+
+      tableBody.innerHTML = '';
+      DATA_NUTRISI.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${item.komponen}</strong></td>
+          <td><span style="color: var(--chili-red); font-weight: 700;">${item.jumlah}</span></td>
+          <td>${item.fungsi}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function initResepPage() {
+      const recipeContainer = document.getElementById('resepContainer');
+      if (!recipeContainer) return;
+
+      recipeContainer.innerHTML = '';
+      DATA_RESEP.forEach(recipe => {
+        const card = document.createElement('div');
+        card.className = 'recipe-card';
+        card.innerHTML = `
+          <div class="recipe-header-img">
+            <img src="${recipe.img}" alt="${recipe.nama}">
+          </div>
+          <div class="recipe-body">
+            <h3 class="recipe-title">${recipe.nama}</h3>
+            <div class="recipe-tags">
+              <span class="recipe-tag">📍 ${recipe.asal}</span>
+              <span class="recipe-tag tag-red">🔥 ${recipe.tingkatPedas}</span>
+              <span class="recipe-tag tag-green">⏱️ ${recipe.waktu}</span>
+            </div>
+
+            <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: var(--text-main);">Bahan-bahan Utama:</h4>
+            <ul class="recipe-ingredients">
+              ${recipe.bahan.map(b => `<li>${b}</li>`).join('')}
+            </ul>
+
+            <div class="recipe-steps-wrap">
+              <h4 style="font-size: 0.95rem; margin-bottom: 8px; color: var(--chili-red);">Langkah Pembuatan:</h4>
+              <ol class="recipe-steps">
+                ${recipe.langkah.map(l => `<li>${l}</li>`).join('')}
+              </ol>
+            </div>
+          </div>
+        `;
+        recipeContainer.appendChild(card);
+      });
+    }
+
+    function initKuis() {
+      const quizBox = document.getElementById('quizBox');
+      if (!quizBox) return;
+
+      let currentStep = 0;
+      let totalScore = 0;
+
+      function renderQuestion() {
+        if (currentStep >= DATA_KUIS.length) {
+          let title = "";
+          let desc = "";
+          let badgeColor = "";
+
+          if (totalScore <= 4) {
+            title = "👶 Level Pedas: Novice / Pemula";
+            desc = "Kamu termasuk tim pedas manis! Cabai merah besar atau saus botolan sudah cukup menantang bagimu. Jangan dipaksa makan rawit ya!";
+            badgeColor = "var(--chili-green)";
+          } else if (totalScore <= 8) {
+            title = "🌶️ Level Pedas: Pecinta Sambal Sejati";
+            desc = "Lidahmu sudah kebal dengan rasa pedas Nusantara! Sambal terasi dan sambal bawang adalah teman wajib di setiap piring makanmu.";
+            badgeColor = "var(--chili-orange)";
+          } else {
+            title = "🔥 Level Pedas: Dewa Cabai (Pedas Master)";
+            desc = "Luar biasa! Kamu bisa melahap Cabai Rawit Merah, Habanero, bahkan Samyang tanpa mengedipkan mata. Lidahmu terbuat dari baja!";
+            badgeColor = "var(--chili-red)";
+          }
+
+          quizBox.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+              <div style="font-size: 4rem; margin-bottom: 10px;">🏆</div>
+              <h3 style="font-size: 1.8rem; color: ${badgeColor}; margin-bottom: 12px;">${title}</h3>
+              <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 24px;">${desc}</p>
+              <button onclick="initKuisReset()" class="btn btn-primary">Ulangi Kuis 🔄</button>
+            </div>
+          `;
+          return;
+        }
+
+        const q = DATA_KUIS[currentStep];
+        quizBox.innerHTML = `
+          <div style="margin-bottom: 20px;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--chili-red);">Pertanyaan ${currentStep + 1} dari ${DATA_KUIS.length}</span>
+            <h3 style="font-size: 1.3rem; font-weight: 800; margin-top: 6px;">${q.pertanyaan}</h3>
+          </div>
+          <div class="quiz-options">
+            ${q.pilihan.map((p) => `
+              <button class="quiz-option" onclick="handleQuizAnswer(${p.poin})">
+                ${p.teks}
+              </button>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      window.handleQuizAnswer = (poin) => {
+        totalScore += poin;
+        currentStep++;
+        renderQuestion();
+      };
+
+      window.initKuisReset = () => {
+        currentStep = 0;
+        totalScore = 0;
+        renderQuestion();
+      };
+
+      renderQuestion();
+    }
+
+    function initFAQ() {
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+          question.addEventListener('click', () => item.classList.toggle('open'));
+        }
+      });
+    }
+
+    function initScovilleCalculator() {
+      const slider = document.getElementById('scovilleSlider');
+      const resultDisplay = document.getElementById('scovilleResult');
+      const bgGauge = document.getElementById('scovilleGaugeBg');
+
+      if (!slider || !resultDisplay) return;
+
+      slider.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value);
+        let label = "";
+        let color = "";
+        let example = "";
+
+        if (val < 1000) {
+          label = "Manis / Sangat Ringan";
+          color = "#4CAF50";
+          example = "Contoh: Paprika, Cabai Bell";
+        } else if (val < 25000) {
+          label = "Pedas Sedang";
+          color = "#FF9800";
+          example = "Contoh: Cabai Jalapeño, Cabai Merah Keriting";
+        } else if (val < 100000) {
+          label = "Pedas Mantap";
+          color = "#E53935";
+          example = "Contoh: Cabai Rawit Merah, Cabai Cayenne";
+        } else if (val < 500000) {
+          label = "Sangat Pedas!";
+          color = "#D32F2F";
+          example = "Contoh: Cabai Habanero, Cabai Katokkon Toraja";
+        } else {
+          label = "🔥 EKSTREM TERBAKAR!";
+          color = "#311B92";
+          example = "Contoh: Carolina Reaper, Ghost Pepper";
+        }
+
+        resultDisplay.innerHTML = `
+          <div style="font-size: 1.8rem; font-weight: 800; color: ${color};">${val.toLocaleString()} SHU</div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-top: 4px;">Tingkat: ${label}</div>
+          <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">${example}</div>
+        `;
+
+        if (bgGauge) bgGauge.style.borderColor = color;
+      });
+    }
+  </script>
+</body>
+</html>
